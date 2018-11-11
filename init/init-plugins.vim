@@ -16,7 +16,7 @@
 if !exists('g:bundle_group')
 	let g:bundle_group = ['basic', 'tags', 'enhanced', 'filetypes', 'textobj']
 	let g:bundle_group += ['tags', 'airline', 'nerdcommenter', 'ale', 'echodoc']
-	let g:bundle_group += ['leaderf', 'plantuml']
+	let g:bundle_group += ['leaderf', 'plantuml', 'youcompleteme']
 endif
 
 
@@ -423,6 +423,14 @@ if index(g:bundle_group, 'ale') >= 0
 	endif
 endif
 
+"----------------------------------------------------------------------
+" YouCompleteMe
+"----------------------------------------------------------------------
+if index(g:bundle_group, 'youcompleteme') >= 0
+	Plug 'Valloric/YouCompleteMe'
+	" manual install by commands
+	" python3 install.py --clang-completer
+endif
 
 "----------------------------------------------------------------------
 " echodoc：搭配 YCM/deoplete 在底部显示函数参数
@@ -571,10 +579,8 @@ let g:ycm_server_log_level = 'info'
 let g:ycm_min_num_identifier_candidate_chars = 2
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_strings=1
-let g:ycm_key_invoke_completion = '<c-z>'
+"let g:ycm_key_invoke_completion = '<c-z>'
 set completeopt=menu,menuone
-
-" noremap <c-z> <NOP>
 
 " 两个字符自动触发语义补全
 let g:ycm_semantic_triggers =  {
