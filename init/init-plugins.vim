@@ -15,8 +15,8 @@
 "----------------------------------------------------------------------
 if !exists('g:bundle_group')
 	let g:bundle_group = ['basic', 'tags', 'enhanced', 'filetypes', 'textobj']
-	let g:bundle_group += ['tags', 'airline', 'nerdtree', 'ale', 'echodoc']
-	let g:bundle_group += ['leaderf']
+	let g:bundle_group += ['tags', 'airline', 'nerdcommenter', 'ale', 'echodoc']
+	let g:bundle_group += ['leaderf', 'plantuml']
 endif
 
 
@@ -91,6 +91,9 @@ augroup END
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'basic') >= 0
 
+	" Alternate Files quickly (.c --> .h etc)
+	Plug 'vim-scripts/a.vim'
+
 	" 展示开始画面，显示最近编辑过的文件
 	Plug 'mhinz/vim-startify'
 
@@ -150,7 +153,7 @@ endif
 if index(g:bundle_group, 'enhanced') >= 0
 
 	" 用 v 选中一个区域后，ALT_+/- 按分隔符扩大/缩小选区
-	Plug 'terryma/vim-expand-region'
+	" Plug 'terryma/vim-expand-region'
 
 	" 快速文件搜索
 	Plug 'junegunn/fzf'
@@ -165,7 +168,7 @@ if index(g:bundle_group, 'enhanced') >= 0
 	Plug 'dyng/ctrlsf.vim'
 
 	" 配对括号和引号自动补全
-	Plug 'Raimondi/delimitMate'
+	" Plug 'Raimondi/delimitMate'
 
 	" 提供 gist 接口
 	Plug 'lambdalisue/vim-gista', { 'on': 'Gista' }
@@ -319,6 +322,28 @@ endif
 
 
 "----------------------------------------------------------------------
+" NERDCommenter
+"----------------------------------------------------------------------
+if index(g:bundle_group, 'nerdcommenter') >= 0
+	Plug 'scrooloose/nerdcommenter'
+	" Add spaces after comment delimiters by default
+	let g:NERDSpaceDelims = 1
+	" Use compact syntax for prettified multi-line comments
+	let g:NERDCompactSexyComs = 1
+	" Align line-wise comment delimiters flush left instead of following code indentation
+	let g:NERDDefaultAlign = 'left'
+	" Set a language to use its alternate delimiters by default
+	let g:NERDAltDelims_java = 1
+	" Allow commenting and inverting empty lines (useful when commenting a region)
+	let g:NERDCommentEmptyLines = 1
+	" Enable trimming of trailing whitespace when uncommenting
+	let g:NERDTrimTrailingWhitespace = 1
+	" Enable NERDCommenterToggle to check all selected lines is commented or not
+	let g:NERDToggleCheckAllLines = 1
+endif
+
+
+"----------------------------------------------------------------------
 " LanguageTool 语法检查
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'grammer') >= 0
@@ -409,6 +434,17 @@ if index(g:bundle_group, 'echodoc') >= 0
 	Plug 'Shougo/echodoc.vim'
 	set noshowmode
 	let g:echodoc#enable_at_startup = 1
+endif
+
+
+"----------------------------------------------------------------------
+" plantuml : UML
+"----------------------------------------------------------------------
+if index(g:bundle_group, 'echodoc') >= 0
+	" Inline previews for Plantuml sequence diagrams. OMG!
+	Plug 'scrooloose/vim-slumlord'
+	" vim syntax file for plantuml
+	Plug 'aklt/plantuml-syntax'
 endif
 
 
