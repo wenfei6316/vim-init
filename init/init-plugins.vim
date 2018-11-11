@@ -16,7 +16,10 @@
 if !exists('g:bundle_group')
 	let g:bundle_group = ['basic', 'tags', 'enhanced', 'filetypes', 'textobj']
 	let g:bundle_group += ['tags', 'airline', 'nerdcommenter', 'ale', 'echodoc']
-	let g:bundle_group += ['leaderf', 'plantuml', 'youcompleteme']
+	let g:bundle_group += ['leaderf', 'plantuml']
+	if has('unix')
+		let g:bundle_group += ['youcompleteme']
+	endif
 endif
 
 
