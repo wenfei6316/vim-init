@@ -448,6 +448,15 @@ endif
 
 
 "----------------------------------------------------------------------
+" vim-template : guards in C/C++ headers, or license disclaimers
+"----------------------------------------------------------------------
+if index(g:bundle_group, 'vim_template') >= 0
+    Plug 'ckelsel/vim-licenses'
+    Plug 'ckelsel/vim-template'
+endif
+
+
+"----------------------------------------------------------------------
 " plantuml : UML
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'echodoc') >= 0
