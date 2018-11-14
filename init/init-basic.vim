@@ -23,8 +23,8 @@ set bs=eol,start,indent
 " 自动缩进
 set autoindent
 
-" 语言缩进优化
-filetype plugin indent on
+" 打开 C/C++ 语言缩进优化
+set cindent
 
 " Windows 禁用 ALT 操作菜单（使得 ALT 可以用到 Vim里）
 set winaltkeys=no
