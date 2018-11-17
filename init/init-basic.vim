@@ -169,4 +169,10 @@ set wildignore+=*.gba,*.sfc,*.078,*.nds,*.smd,*.smc
 set wildignore+=*.linux2,*.win32,*.darwin,*.freebsd,*.linux,*.android
 
 
+"----------------------------------------------------------------------
+" gvim启动最大化
+"----------------------------------------------------------------------
+if has('win32')
+    au GUIEnter * simalt ~x
+endif
 
