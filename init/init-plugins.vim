@@ -151,6 +151,12 @@ endif
 " 增强插件
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'enhanced') >= 0
+    " 方便添加'括号'
+    Plug 'tpope/vim-surround'
+
+    " 多个选中
+    Plug 'terryma/vim-multiple-cursors'
+
     " 显示空格
     Plug 'ntpeters/vim-better-whitespace'
 
