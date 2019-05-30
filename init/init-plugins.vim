@@ -154,6 +154,9 @@ if index(g:bundle_group, 'enhanced') >= 0
     " 会话管理
     Plug 'tpope/vim-obsession'
 
+    " format code
+    Plug 'rhysd/vim-clang-format'
+
     " 多个选中
     Plug 'terryma/vim-multiple-cursors'
 
@@ -184,6 +187,13 @@ if index(g:bundle_group, 'enhanced') >= 0
 	" ALT_+/- 用于按分隔符扩大缩小 v 选区
 	" map <m-=> <Plug>(expand_region_expand)
 	" map <m--> <Plug>(expand_region_shrink)
+
+    let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "Standard" : "C++11",
+            \ "BreakBeforeBraces" : "Stroustrup"}
 endif
 
 
