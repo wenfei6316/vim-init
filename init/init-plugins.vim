@@ -93,6 +93,8 @@ augroup END
 " 基础插件
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'basic') >= 0
+    " 黑客屏保
+    Plug 'vim-scripts/matrix.vim--Yang'
 
 	" Alternate Files quickly (.c --> .h etc)
 	Plug 'vim-scripts/a.vim'
