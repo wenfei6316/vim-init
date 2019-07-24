@@ -153,6 +153,9 @@ endif
 " 增强插件
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'enhanced') >= 0
+    " Simplify Doxygen documentation in C, C++, Python.
+    Plug 'vim-scripts/DoxygenToolkit.vim'
+
     " 会话管理
     Plug 'tpope/vim-obsession'
 
