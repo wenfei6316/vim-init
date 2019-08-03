@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# vim depends tools
+sudo apt-get install silversearcher-ag ctags
+
 # ubuntu 14.04
 sudo apt-get install lua5.1  liblua5.1-0-dev luajit libluajit-5.1 python3.4-dev zsh python3-pip
 sudo pip3 install typing
