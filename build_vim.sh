@@ -7,6 +7,10 @@ sudo apt-get install silversearcher-ag ctags
 sudo apt-get install lua5.1  liblua5.1-0-dev luajit libluajit-5.1 python3.4-dev zsh python3-pip
 sudo pip3 install typing
 
+# ubuntu 16.04
+sudo apt-get install lua5.1  liblua5.1-0-dev luajit libluajit-5.1 zsh python3-pip
+sudo pip3 install typing
+
 # sudo apt-get install lua5.1  liblua5.1-0-dev luajit libluajit-5.1
 # sudo apt-get install python3.4-dev zsh
 #
@@ -39,3 +43,7 @@ cd /tmp/vim
     --enable-fontset \
     --enable-terminal \
     --enable-fail-if-missing
+
+make -j4
+
+sudo make install
