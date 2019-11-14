@@ -42,6 +42,7 @@ cp ~/.vim/vim-init/.vimrc ~
 cd ~/.vim/bundles
 git clone https://github.com/ycm-core/YouCompleteMe.git
 cd ~/.vim/bundles/YouCompleteMe
+git submodule update --init
 python3 install.py --clang-completer
 ```
 
