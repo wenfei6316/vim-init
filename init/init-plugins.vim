@@ -100,7 +100,7 @@ if index(g:bundle_group, 'basic') >= 0
 	Plug 'vim-scripts/a.vim'
 
 	" 展示开始画面，显示最近编辑过的文件
-	Plug 'mhinz/vim-startify'
+	" Plug 'mhinz/vim-startify'
 
 	" 一次性安装一大堆 colorscheme
 	Plug 'flazz/vim-colorschemes'
@@ -109,10 +109,10 @@ if index(g:bundle_group, 'basic') >= 0
 	Plug 'xolox/vim-misc'
 
 	" 用于在侧边符号栏显示 marks （ma-mz 记录的位置）
-	Plug 'kshenoy/vim-signature'
+	" Plug 'kshenoy/vim-signature'
 
 	" 用于在侧边符号栏显示 git/svn 的 diff
-	Plug 'mhinz/vim-signify'
+    Plug 'mhinz/vim-signify'
 
 	" 根据 quickfix 中匹配到的错误信息，高亮对应文件的错误行
 	" 使用 :RemoveErrorMarkers 命令
@@ -472,22 +472,13 @@ if index(g:bundle_group, 'echodoc') >= 0
 	let g:echodoc#enable_at_startup = 1
 endif
 
-
 "----------------------------------------------------------------------
-" vim-template : guards in C/C++ headers, or license disclaimers
-"----------------------------------------------------------------------
-if index(g:bundle_group, 'vim_template') >= 0
-    Plug 'ckelsel/vim-licenses'
-    Plug 'ckelsel/vim-template'
-endif
-
-
-"----------------------------------------------------------------------
-" plantuml : UML
+" plantuml : 生成UML图
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'echodoc') >= 0
 	" Inline previews for Plantuml sequence diagrams. OMG!
 	Plug 'scrooloose/vim-slumlord'
+
 	" vim syntax file for plantuml
 	Plug 'aklt/plantuml-syntax'
 endif
