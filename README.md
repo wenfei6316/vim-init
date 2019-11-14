@@ -39,9 +39,9 @@ cp ~/.vim/vim-init/.vimrc ~
 
 ## 手动安装YouCompleteMe
 ```bash
-cd ~/.vim/bundle
+cd ~/.vim/bundles
 git clone https://github.com/ycm-core/YouCompleteMe.git
-cd ~/.vim/bundle/YouCompleteMe
+cd ~/.vim/bundles/YouCompleteMe
 python3 install.py --clang-completer
 ```
 
