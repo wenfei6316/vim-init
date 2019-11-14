@@ -50,6 +50,10 @@ python3 install.py --clang-completer
 ```bash
 sudo apt-get install clang-format-6.0
 sudo apt-get install silversearcher-ag ctags
+
+// clang-format建软连接
+cd /usr/bin
+sudo ln -s clang-format-6.0 clang-format
 ```
 
 
