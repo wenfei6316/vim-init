@@ -46,8 +46,10 @@ python3 install.py --clang-completer
 ```
 
 ## 安装插件需要的第三方工具
+```bash
 sudo apt-get install clang-format
 sudo apt-get install silversearcher-ag ctags
+```
 
 
 
