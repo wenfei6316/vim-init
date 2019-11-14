@@ -21,19 +21,35 @@
 
 # 安装
 
+## 下载仓库
 将项目克隆到你喜欢的目录内，比如 `~/.vim` 内：
 
 ```bash
 mkdir ~/.vim
 cd ~/.vim
 git clone https://github.com/ckelsel/vim-init.git
-cp vim-init/.vimrc ~
+cp ~/.vim/vim-init/.vimrc ~
 ```
 请调整你的终端软件，确保对 ALT 键的支持，以及 Backspace 键发送正确扫描码：
 
 [终端软件下正确支持 ALT 键和 Backspace 键](https://github.com/skywind3000/vim-init/wiki/Setup-terminals-to-support-ALT-and-Backspace-correctly)
 
+## 安装插件
 然后启动 Vim，在命令行运行 `:PlugInstall` 安装依赖插件即可。
+
+## 手动安装YouCompleteMe
+```bash
+cd ~/.vim/bundle
+git clone https://github.com/ycm-core/YouCompleteMe.git
+cd ~/.vim/bundle/YouCompleteMe
+python3 install.py --clang-completer
+```
+
+## 安装插件需要的第三方工具
+sudo apt-get install clang-format
+sudo apt-get install silversearcher-ag ctags
+
+
 
 # 结构
 

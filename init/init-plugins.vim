@@ -15,11 +15,8 @@
 "----------------------------------------------------------------------
 if !exists('g:bundle_group')
 	let g:bundle_group = ['basic', 'tags', 'enhanced', 'filetypes', 'textobj']
-	let g:bundle_group += ['tags', 'airline', 'nerdcommenter', 'ale', 'echodoc']
+	let g:bundle_group += ['airline', 'nerdcommenter', 'ale', 'echodoc']
 	let g:bundle_group += ['leaderf', 'plantuml']
-	if has('unix')
-		let g:bundle_group += ['youcompleteme']
-	endif
 endif
 
 
@@ -451,17 +448,6 @@ if index(g:bundle_group, 'ale') >= 0
 		let g:ale_linters.cpp += ['clang']
 	endif
 endif
-
-
-"----------------------------------------------------------------------
-" YouCompleteMe
-"----------------------------------------------------------------------
-if index(g:bundle_group, 'youcompleteme') >= 0
-	Plug 'Valloric/YouCompleteMe'
-	" manual install by commands
-	" python3 install.py --clang-completer
-endif
-
 
 "----------------------------------------------------------------------
 " echodoc：搭配 YCM/deoplete 在底部显示函数参数
