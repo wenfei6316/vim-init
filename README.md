@@ -39,6 +39,7 @@ cp ~/.vim/vim-init/.vimrc ~
 
 ## 手动安装YouCompleteMe
 ```bash
+sudo apt-get install cmake
 cd ~/.vim/bundles
 git clone https://github.com/ycm-core/YouCompleteMe.git
 cd ~/.vim/bundles/YouCompleteMe
