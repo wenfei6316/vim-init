@@ -287,5 +287,9 @@ set tabline=%!Vim_NeatTabLine()
 set guitablabel=%{Vim_NeatGuiTabLabel()}
 set guitabtooltip=%{Vim_NeatGuiTabTip()}
 
-
+" GVim去掉菜单栏和工具栏
+if has('win32')
+    set guioptions-=m
+    set guioptions-=T
+endif
 
