@@ -159,8 +159,8 @@ if index(g:bundle_group, 'enhanced') >= 0
     " format code
     Plug 'rhysd/vim-clang-format'
 
-    " 多个选中
-    Plug 'terryma/vim-multiple-cursors'
+    " 多个选中 [跟LeaderF冲突]
+    " Plug 'terryma/vim-multiple-cursors'
 
     " 显示空格
     Plug 'ntpeters/vim-better-whitespace'
