@@ -52,4 +52,5 @@ LoadScript init/init-keymaps.vim
 " 自定义Text
 LoadScript init/init-text.vim
 
+" 自定义编译
 LoadScript init/init-build.vim

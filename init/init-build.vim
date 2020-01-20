@@ -1,9 +1,23 @@
+"======================================================================
+"
+" init-build.vim
+"
+" Created by XieKunming on 2020/01/20
+"
+"======================================================================
+function BuildATRDPTool()
+    cd install
+    AsyncRun build.bat
+    cd ..
+endf
+map make :call BuildATRDPTool()
+
 function BuildHSR()
     cd install
     AsyncRun build-agent-fulllog.bat
     cd ..
 endf
-map make :call BuildHSR()
+" map make :call BuildHSR()
 
 function LaunchHSRClient()
      " C:\Users\v\Downloads\0\0_as\winc\install\setup\x86\bin\r-old.bat
@@ -11,3 +25,7 @@ function LaunchHSRClient()
 endf
 map test :call LaunchHSRClient()
 
+" 加载工程配置文件
+if filereadable(".workspace.vim")
+    source .workspace.vim
+endif
