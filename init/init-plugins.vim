@@ -16,7 +16,8 @@
 if !exists('g:bundle_group')
 	let g:bundle_group = ['basic', 'tags', 'enhanced', 'filetypes', 'textobj']
 	let g:bundle_group += ['airline', 'nerdcommenter', 'ale', 'echodoc']
-	let g:bundle_group += ['leaderf', 'plantuml']
+	let g:bundle_group += ['leaderf']
+	" let g:bundle_group += ['plantuml']
 endif
 
 
@@ -461,7 +462,7 @@ endif
 "----------------------------------------------------------------------
 " plantuml : 生成UML图
 "----------------------------------------------------------------------
-if index(g:bundle_group, 'echodoc') >= 0
+if index(g:bundle_group, 'plantuml') >= 0
 	" Inline previews for Plantuml sequence diagrams. OMG!
 	Plug 'scrooloose/vim-slumlord'
 
