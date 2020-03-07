@@ -44,7 +44,6 @@ sudo apt-get install cmake
 cd ~/.vim/bundles
 git clone https://gitee.com/zhuixixi/YouCompleteMe.git --depth=1
 cd ~/.vim/bundles/YouCompleteMe
-git submodule update --init --recursive
 python3 install.py --clang-completer
 ```
 
