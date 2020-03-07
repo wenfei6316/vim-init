@@ -37,11 +37,12 @@ cp ~/.vim/vim-init/.vimrc ~
 ## 安装插件
 然后启动 Vim，在命令行运行 `:PlugInstall` 安装依赖插件即可。
 
-## 手动安装YouCompleteMe
+## 手动安装YouCompleteMe 
+##（从gitee下载YouCompleteMe，解决github下载慢的问题，已克隆YouCompleteMe的仓库及子模块到gitee上，2020年3月7日10:22:24）
 ```bash
 sudo apt-get install cmake
 cd ~/.vim/bundles
-git clone https://github.com/ycm-core/YouCompleteMe.git --depth=1
+git clone https://gitee.com/zhuixixi/YouCompleteMe.git --depth=1
 cd ~/.vim/bundles/YouCompleteMe
 git submodule update --init --recursive
 python3 install.py --clang-completer
