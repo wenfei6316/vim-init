@@ -15,10 +15,6 @@
 "======================================================================
 " vim: set ts=4 sw=4 tw=78 noet :
 
-"----------------------------------------------------------------------
-" type <Space> to enter command model
-"----------------------------------------------------------------------
-nmap <Space> :
 
 "----------------------------------------------------------------------
 " INSERT 模式下使用 EMACS 键位
@@ -142,6 +138,7 @@ noremap <silent> <leader>tc :tabnew<cr>
 noremap <silent> <leader>tq :tabclose<cr>
 noremap <silent> <leader>tn :tabnext<cr>
 noremap <silent> <leader>tp :tabprev<cr>
+noremap <silent> <leader>to :tabonly<cr>
 
 
 " 左移 tab

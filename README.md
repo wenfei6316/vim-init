@@ -1,6 +1,3 @@
-# vim版本要求
-只支持vim8及以上版本，如果是vim7的版本，需要手动升级vim
-
 # 前言
 轻量级 Vim 配置框架，全中文注释，这既是一份合理的轻量级配置，更是一份简明教程。话说，网上的 Vim 配置多的数不过来，这里又做一个干嘛？这些配置都有一些问题：
 
@@ -21,43 +18,24 @@
 
 # 安装
 
-## 下载仓库
 将项目克隆到你喜欢的目录内，比如 `~/.vim` 内：
 
 ```bash
-mkdir ~/.vim
 cd ~/.vim
-git clone https://github.com/ckelsel/vim-init.git
-cp ~/.vim/vim-init/.vimrc ~
+git clone https://github.com/skywind3000/vim-init.git
 ```
+
+然后创建你的 `~/.vimrc` 文件，里面只有一句话：
+
+```VimL
+source ~/.vim/vim-init/init.vim
+```
+
 请调整你的终端软件，确保对 ALT 键的支持，以及 Backspace 键发送正确扫描码：
 
 [终端软件下正确支持 ALT 键和 Backspace 键](https://github.com/skywind3000/vim-init/wiki/Setup-terminals-to-support-ALT-and-Backspace-correctly)
 
-## 安装插件
 然后启动 Vim，在命令行运行 `:PlugInstall` 安装依赖插件即可。
-
-## 手动安装YouCompleteMe
-```bash
-sudo apt-get install cmake
-cd ~/.vim/bundles
-git clone https://github.com/ycm-core/YouCompleteMe.git
-cd ~/.vim/bundles/YouCompleteMe
-git submodule update --init --recursive
-python3 install.py --clang-completer
-```
-
-## 安装插件需要的第三方工具
-```bash
-sudo apt-get install clang-format-6.0
-sudo apt-get install silversearcher-ag ctags
-
-// clang-format建软连接
-cd /usr/bin
-sudo ln -s clang-format-6.0 clang-format
-```
-
-
 
 # 结构
 
@@ -77,7 +55,7 @@ sudo ln -s clang-format-6.0 clang-format
 
 # 帮助
 
-既然时全中文注释，帮助主要看 [init-keymaps.vim](https://github.com/skywind3000/vim-init/blob/master/init/init-keymaps.vim) 和 [init-plugins.vim](https://github.com/skywind3000/vim-init/blob/master/init/init-plugins.vim) 两个文件，每个点我都写满了注释了，也是未来你自己可能修改的最多的两个文件。每次你修改或者调试了单个 .vim 配置文件后，命令行输入 `:so %` 即可重新载入，so 是 `source` 的简写，意思是加载脚本，`%` 代表当前正在编辑脚本的名字。
+既然是全中文注释，帮助主要看 [init-keymaps.vim](https://github.com/skywind3000/vim-init/blob/master/init/init-keymaps.vim) 和 [init-plugins.vim](https://github.com/skywind3000/vim-init/blob/master/init/init-plugins.vim) 两个文件，每个点我都写满了注释了，也是未来你自己可能修改的最多的两个文件。每次你修改或者调试了单个 .vim 配置文件后，命令行输入 `:so %` 即可重新载入，so 是 `source` 的简写，意思是加载脚本，`%` 代表当前正在编辑脚本的名字。
 
 # Credit
 

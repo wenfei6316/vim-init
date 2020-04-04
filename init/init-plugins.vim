@@ -1,6 +1,6 @@
 "======================================================================
 "
-" init-plugins.vim -
+" init-plugins.vim - 
 "
 " Created by skywind on 2018/05/31
 " Last Modified: 2018/06/10 23:11
@@ -14,10 +14,10 @@
 " 默认情况下的分组，可以再前面覆盖之
 "----------------------------------------------------------------------
 if !exists('g:bundle_group')
-	let g:bundle_group = ['basic', 'tags', 'enhanced', 'filetypes', 'textobj']
-	let g:bundle_group += ['airline', 'nerdcommenter', 'ale', 'echodoc']
-	let g:bundle_group += ['leaderf']
-	" let g:bundle_group += ['plantuml']
+	let g:bundle_group = ['basic', 'airline', 'nerdcommenter']
+	"let g:bundle_group += ['textobj', 'filetypes']
+	"let g:bundle_group += ['tags', , 'nerdtree', 'ale', 'echodoc']
+	"let g:bundle_group += ['leaderf']
 endif
 
 
@@ -39,21 +39,22 @@ call plug#begin(get(g:, 'bundle_home', '~/.vim/bundles'))
 
 
 "----------------------------------------------------------------------
-" 默认插件
+" 默认插件 
 "----------------------------------------------------------------------
 
 " 全文快速移动，<leader><leader>f{char} 即可触发
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 
 " 文件浏览器，代替 netrw
-Plug 'justinmk/vim-dirvish'
+" Plug 'justinmk/vim-dirvish'
 
 " 表格对齐，使用命令 Tabularize
-Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
+" Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 
 " Diff 增强，支持 histogram / patience 等更科学的 diff 算法
-Plug 'chrisbra/vim-diff-enhanced'
+" Plug 'chrisbra/vim-diff-enhanced'
 
+Plug 'vim-scripts/matrix.vim--Yang'
 
 "----------------------------------------------------------------------
 " Dirvish 设置：自动排序并隐藏文件，同时定位到相关文件
@@ -91,14 +92,16 @@ augroup END
 " 基础插件
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'basic') >= 0
-    " 黑客屏保
-    Plug 'vim-scripts/matrix.vim--Yang'
-
-	" Alternate Files quickly (.c --> .h etc)
+    " Alternate Files quickly (.c --> .h etc)
 	Plug 'vim-scripts/a.vim'
 
+    Plug 'rhysd/vim-clang-format'
+
+	" 配对括号和引号自动补全
+	Plug 'Raimondi/delimitMate'
+
 	" 展示开始画面，显示最近编辑过的文件
-	" Plug 'mhinz/vim-startify'
+	Plug 'mhinz/vim-startify'
 
 	" 一次性安装一大堆 colorscheme
 	Plug 'flazz/vim-colorschemes'
@@ -110,10 +113,10 @@ if index(g:bundle_group, 'basic') >= 0
 	" Plug 'kshenoy/vim-signature'
 
 	" 用于在侧边符号栏显示 git/svn 的 diff
-    Plug 'mhinz/vim-signify'
+	Plug 'mhinz/vim-signify'
 
 	" 根据 quickfix 中匹配到的错误信息，高亮对应文件的错误行
-	" 使用 :RemoveErrorMarkers 命令
+	" 使用 :RemoveErrorMarkers 命令或者 <space>ha 清除错误
 	Plug 'mh21/errormarker.vim'
 
 	" 使用 ALT+e 会在不同窗口/标签上显示 A/B/C 等编号，然后字母直接跳转
@@ -129,8 +132,11 @@ if index(g:bundle_group, 'basic') >= 0
 	nmap <m-e> <Plug>(choosewin)
 
 	" 默认不显示 startify
-	" let g:startify_disable_at_vimenter = 1
+	let g:startify_disable_at_vimenter = 1
 	let g:startify_session_dir = '~/.vim/session'
+
+	" 使用 <space>ha 清除 errormarker 标注的错误
+	noremap <silent><space>ha :RemoveErrorMarkers<cr>
 
 	" signify 调优
 	let g:signify_vcs_list = ['git', 'svn']
@@ -151,26 +157,12 @@ endif
 " 增强插件
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'enhanced') >= 0
-    " Simplify Doxygen documentation in C, C++, Python.
-    Plug 'vim-scripts/DoxygenToolkit.vim'
-
-    " 会话管理
-    Plug 'tpope/vim-obsession'
-
-    " format code
-    Plug 'rhysd/vim-clang-format'
-
-    " 多个选中 [跟LeaderF冲突]
-    " Plug 'terryma/vim-multiple-cursors'
-
-    " 显示空格
-    Plug 'ntpeters/vim-better-whitespace'
 
 	" 用 v 选中一个区域后，ALT_+/- 按分隔符扩大/缩小选区
-	" Plug 'terryma/vim-expand-region'
+	Plug 'terryma/vim-expand-region'
 
 	" 快速文件搜索
-	" Plug 'junegunn/fzf'
+	Plug 'junegunn/fzf'
 
 	" 给不同语言提供字典补全，插入模式下 c-x c-k 触发
 	Plug 'asins/vim-dict'
@@ -185,19 +177,36 @@ if index(g:bundle_group, 'enhanced') >= 0
 	Plug 'Raimondi/delimitMate'
 
 	" 提供 gist 接口
-	" Plug 'lambdalisue/vim-gista', { 'on': 'Gista' }
-
+	Plug 'lambdalisue/vim-gista', { 'on': 'Gista' }
+	
 	" ALT_+/- 用于按分隔符扩大缩小 v 选区
-	" map <m-=> <Plug>(expand_region_expand)
-	" map <m--> <Plug>(expand_region_shrink)
-
-    let g:clang_format#style_options = {
-            \ "AccessModifierOffset" : -4,
-            \ "AllowShortIfStatementsOnASingleLine" : "true",
-            \ "AlwaysBreakTemplateDeclarations" : "true",
-            \ "Standard" : "C++11",
-            \ "BreakBeforeBraces" : "Stroustrup"}
+	map <m-=> <Plug>(expand_region_expand)
+	map <m--> <Plug>(expand_region_shrink)
 endif
+
+
+"----------------------------------------------------------------------
+" NERDCommenter
+"----------------------------------------------------------------------
+if index(g:bundle_group, 'nerdcommenter') >= 0
+	Plug 'scrooloose/nerdcommenter'
+	" Add spaces after comment delimiters by default
+	let g:NERDSpaceDelims = 1
+	" Use compact syntax for prettified multi-line comments
+	let g:NERDCompactSexyComs = 1
+	" Align line-wise comment delimiters flush left instead of following code indentation
+	let g:NERDDefaultAlign = 'left'
+	" Set a language to use its alternate delimiters by default
+	let g:NERDAltDelims_java = 1
+	" Allow commenting and inverting empty lines (useful when commenting a region)
+	let g:NERDCommentEmptyLines = 1
+	" Enable trimming of trailing whitespace when uncommenting
+	let g:NERDTrimTrailingWhitespace = 1
+	" Enable NERDCommenterToggle to check all selected lines is commented or not
+	let g:NERDToggleCheckAllLines = 1
+endif
+
+
 
 
 "----------------------------------------------------------------------
@@ -222,7 +231,7 @@ if index(g:bundle_group, 'tags') >= 0
 	let g:gutentags_cache_dir = expand('~/.cache/tags')
 
 	" 默认禁用自动生成
-	let g:gutentags_modules = []
+	let g:gutentags_modules = [] 
 
 	" 如果有 ctags 可执行就允许动态生成 ctags 文件
 	if executable('ctags')
@@ -252,7 +261,7 @@ endif
 " 文本对象：textobj 全家桶
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'textobj') >= 0
-
+	
 	" 基础插件：提供让用户方便的自定义文本对象的接口
 	Plug 'kana/vim-textobj-user'
 
@@ -299,11 +308,8 @@ if index(g:bundle_group, 'filetypes') >= 0
 	" rust 语法增强
 	Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
-	" vim org-mode
+	" vim org-mode 
 	Plug 'jceb/vim-orgmode', { 'for': 'org' }
-
-    " 代码格式化
-    Plug 'Chiel92/vim-autoformat'
 endif
 
 
@@ -346,28 +352,6 @@ endif
 
 
 "----------------------------------------------------------------------
-" NERDCommenter
-"----------------------------------------------------------------------
-if index(g:bundle_group, 'nerdcommenter') >= 0
-	Plug 'scrooloose/nerdcommenter'
-	" Add spaces after comment delimiters by default
-	let g:NERDSpaceDelims = 1
-	" Use compact syntax for prettified multi-line comments
-	let g:NERDCompactSexyComs = 1
-	" Align line-wise comment delimiters flush left instead of following code indentation
-	let g:NERDDefaultAlign = 'left'
-	" Set a language to use its alternate delimiters by default
-	let g:NERDAltDelims_java = 1
-	" Allow commenting and inverting empty lines (useful when commenting a region)
-	let g:NERDCommentEmptyLines = 1
-	" Enable trimming of trailing whitespace when uncommenting
-	let g:NERDTrimTrailingWhitespace = 1
-	" Enable NERDCommenterToggle to check all selected lines is commented or not
-	let g:NERDToggleCheckAllLines = 1
-endif
-
-
-"----------------------------------------------------------------------
 " LanguageTool 语法检查
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'grammer') >= 0
@@ -388,7 +372,7 @@ endif
 " ale：动态语法检查
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'ale') >= 0
-	Plug 'dense-analysis/ale'
+	Plug 'w0rp/ale'
 
 	" 设定延迟和提示信息
 	let g:ale_completion_delay = 500
@@ -411,13 +395,13 @@ if index(g:bundle_group, 'ale') >= 0
 
 	" 编辑不同文件类型需要的语法检查器
 	let g:ale_linters = {
-				\ 'c': ['gcc', 'cppcheck'],
-				\ 'cpp': ['gcc', 'cppcheck'],
-				\ 'python': ['flake8', 'pylint'],
-				\ 'lua': ['luac'],
+				\ 'c': ['gcc', 'cppcheck'], 
+				\ 'cpp': ['gcc', 'cppcheck'], 
+				\ 'python': ['flake8', 'pylint'], 
+				\ 'lua': ['luac'], 
 				\ 'go': ['go build', 'gofmt'],
 				\ 'java': ['javac'],
-				\ 'javascript': ['eslint'],
+				\ 'javascript': ['eslint'], 
 				\ }
 
 
@@ -450,6 +434,7 @@ if index(g:bundle_group, 'ale') >= 0
 	endif
 endif
 
+
 "----------------------------------------------------------------------
 " echodoc：搭配 YCM/deoplete 在底部显示函数参数
 "----------------------------------------------------------------------
@@ -457,17 +442,6 @@ if index(g:bundle_group, 'echodoc') >= 0
 	Plug 'Shougo/echodoc.vim'
 	set noshowmode
 	let g:echodoc#enable_at_startup = 1
-endif
-
-"----------------------------------------------------------------------
-" plantuml : 生成UML图
-"----------------------------------------------------------------------
-if index(g:bundle_group, 'plantuml') >= 0
-	" Inline previews for Plantuml sequence diagrams. OMG!
-	Plug 'scrooloose/vim-slumlord'
-
-	" vim syntax file for plantuml
-	Plug 'aklt/plantuml-syntax'
 endif
 
 
@@ -497,7 +471,7 @@ if index(g:bundle_group, 'leaderf') >= 0
 		" ALT+n 打开 buffer 列表进行模糊匹配
 		noremap <m-n> :LeaderfBuffer<cr>
 
-		" ALT+m 全局 tags 模糊匹配
+		" 全局 tags 模糊匹配
 		noremap <m-m> :LeaderfTag<cr>
 
 		" 最大历史文件保存 2048 个
@@ -597,8 +571,10 @@ let g:ycm_server_log_level = 'info'
 let g:ycm_min_num_identifier_candidate_chars = 2
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_strings=1
-"let g:ycm_key_invoke_completion = '<c-z>'
-set completeopt=menu,menuone
+let g:ycm_key_invoke_completion = '<c-z>'
+"set completeopt=menu,menuone,noselect
+
+" noremap <c-z> <NOP>
 
 " 两个字符自动触发语义补全
 let g:ycm_semantic_triggers =  {
@@ -610,16 +586,16 @@ let g:ycm_semantic_triggers =  {
 "----------------------------------------------------------------------
 " Ycm 白名单（非名单内文件不启用 YCM），避免打开个 1MB 的 txt 分析半天
 "----------------------------------------------------------------------
-let g:ycm_filetype_whitelist = {
+let g:ycm_filetype_whitelist = { 
 			\ "c":1,
-			\ "cpp":1,
+			\ "cpp":1, 
 			\ "objc":1,
 			\ "objcpp":1,
 			\ "python":1,
 			\ "java":1,
 			\ "javascript":1,
 			\ "coffee":1,
-			\ "vim":1,
+			\ "vim":1, 
 			\ "go":1,
 			\ "cs":1,
 			\ "lua":1,
