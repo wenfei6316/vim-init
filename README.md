@@ -45,6 +45,12 @@ cd ~/.vim/bundles
 git clone https://gitee.com/zhuixixi/YouCompleteMe.git --depth=1
 cd ~/.vim/bundles/YouCompleteMe
 python3 install.py --clang-completer
+如果出现ERROR: Python headers are missing in /usr/include/python3.8表示没有安装python3-dev
+执行sudo apt-get install python3-dev即可
+如果出现
+CMake Error at CMakeLists.txt:26 (project):
+  No CMAKE_CXX_COMPILER could be found.
+表示没有安装C++工具，执行sudo apt-get install g++即可
 ```
 
 ## 安装插件需要的第三方工具
